@@ -8,8 +8,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
 import { ClientesModule } from './clientes/clientes.module';
-import { FormsModule } from '@angular/forms';
-import { ClientesService } from './clientes.service';
+import { FormsModule} from '@angular/forms';
+import { ClientesService } from './service/clientes.service';
+import { ProdutosModule } from './produtos/produtos.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +22,13 @@ import { ClientesService } from './clientes.service';
     BrowserModule,
     HttpClientModule,
     ClientesModule,
+    ProdutosModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
     TemplateModule,
     FormsModule
+    
   ],
   providers: [ClientesService],
   bootstrap: [AppComponent]

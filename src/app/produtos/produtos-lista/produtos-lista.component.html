@@ -1,0 +1,74 @@
+<h1 class="mt-4">Produto</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consultar</li>
+</ol>
+
+<div class="container">
+    <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+        {{error}}
+      </div>
+    <div class="row">
+        <div class="col-md-2">
+            <h5> Filtrar por: </h5>
+        </div>
+        <div class="col-md-4">
+            <select name="tipoPesquisa" [(ngModel)]="tipoPesquisa" class="form-select">
+                <option value="">Selecionar...</option>
+                <option value="3">Nome</option>
+                <option value="2">Nome e Código do Produto</option>
+                <option value="1">Nome, Código do Produto e Data</option> 
+            </select>
+        </div>
+    </div>
+    <br/>
+    <form (ngSubmit)="buscarCompra()" id="formBusca">
+        <div class="row">
+            <div class="col-md-4" *ngIf="tipoPesquisa">
+            <div class="form-group">
+                <label>Nome do Cliente: *</label>
+                <input  class="form-control" type="text" name="nomeCliente" id="nomeCliente" [(ngModel)]="nomeCliente">
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="tipoPesquisa==='1' || tipoPesquisa==='2' ">
+            <div class="form-group">
+            <label>Código do Produto: *</label>
+            <input  class="form-control" type="text" name="codProduto" id="codProduto" [(ngModel)]="codProduto">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group" *ngIf="tipoPesquisa==='1'">
+        <label>Data da Compra: *</label>
+        <input #dataCompraInput class="form-control" type="date" name="dataCompra" id="dataCompra" [(ngModel)]="dataCompra"> 
+    </div>
+</div>
+ </div>
+ <div class="row">
+    <div class="col-md-2" *ngIf="tipoPesquisa">
+        <button type="submit" class="btn btn-success"><fa-icon [icon]="faSearch"></fa-icon>Buscar</button></div>
+        <div class="col-md-2" *ngIf="tipoPesquisa">
+            <button class="btn btn-primary" type="reset"><fa-icon [icon]="faRotateRight"></fa-icon>Novo</button></div>
+            <div class="col-md-4">
+                <button class="btn btn-warning" routerLink="/produtos-form"><fa-icon [icon]="faPlus"></fa-icon>Produto</button></div>
+</div>
+    </form>
+    <br/>
+    <table class="table table-condensed" *ngIf="mostrarResultado">
+        <tr>
+            <th>Nome do Cliente</th>
+            <th>Data da Compra</th>
+            <th>Código do Produto</th>
+            <th>Produto</th>
+            <th>Preço</th>
+        </tr>
+        <tr *ngFor="let produto of produtos">
+            <td>{{produto.cliente.nome}}</td>
+            <td>{{produto.dataCompra}}</td>
+            <td>{{produto.codProduto}}</td>
+            <td>{{produto.produto}}</td>
+            <td>{{produto.valor}}</td>
+        </tr>
+    </table>
+</div>
+<br />

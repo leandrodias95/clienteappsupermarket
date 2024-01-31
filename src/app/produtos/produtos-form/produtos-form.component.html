@@ -1,0 +1,70 @@
+<h1 class="mt-4">Produto</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Cadastro</li>
+    </ol>
+<div class="container">
+ <form #produtoForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-6" *ngIf="condicaoCliente==false">
+           <div class="form-group">
+            <label>CPF do Cliente: </label>
+            <input type="text" class="form-control" [(ngModel)]="produto.cpfCompra" name="produto.cpfCliente" [ngModel]="produto.cpfCompra">
+           </div> 
+        </div>
+
+        <div class="col-md-6" *ngIf="condicaoCliente==true">
+            <div class="form-group">
+             <label>CPF do Cliente: </label>
+             <input type="text" class="form-control" [(ngModel)]="produto.cpfCompra" name="produto.cpfCliente" disabled>
+            </div> 
+         </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+            <label>Data:</label>
+            <input type="text" class="form-control" [ngModel]="produto.dataCompra" name="produto.dataCompra" disabled>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+   <div class="col-md-6">
+       <div class="form-group">
+        <label>CodProduto: </label>
+        <input type="text" name="produto.codProduto" #pcodProdutoInput id="produto.codProduto" [(ngModel)]="produto.codProduto" class="form-control">
+       </div> 
+    </div>
+    <div class="col-md-6">
+       <div class="form-group">
+        <label>Produto: </label>
+        <input type="text" name="produto.produto" #pProdutoInput id="produto.produto" class="form-control" [(ngModel)]="produto.produto">
+       </div> 
+    </div>
+</div>
+<div class="row">
+   <div class="col-md-6">
+       <div class="form-group">
+        <label>Descrição: </label>
+        <input type="text" name="produto.descricao" #pdescricaoInput id="produto.descricao" class="form-control" [(ngModel)]="produto.descricao">
+       </div> 
+    </div>
+    <div class="col-md-6">
+       <div class="form-group">
+        <label>Preço: </label>
+        <input type="number" name="produto.valor"  id="produto.valor" class="form-control" [(ngModel)]="produto.valor" #pvalorInput> 
+       </div> 
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success"><fa-icon [icon]="faSave"></fa-icon>Salvar</button></div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" (click)="novo()"><fa-icon [icon]="faRotateRight"></fa-icon>Novo</button></div>
+            <div class="col-md-2">
+            <button class="btn btn-danger" routerLink="/produtos-lista"><fa-icon [icon]="faArrowAltCircleLeft"></fa-icon>Voltar</button>
+        </div>
+    </div>
+</form>
+</div>
+<br/>

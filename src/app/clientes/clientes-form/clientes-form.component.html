@@ -3,6 +3,12 @@
         <li class="breadcrumb-item active">Cadastro</li>
     </ol>
     <div class="container">
+        <div class="alert alert-success" role="alert" *ngIf="success==true">
+            Cadastro / Atualização realizado com sucesso
+          </div>
+          <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+            {{error}}
+          </div>
         <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-md-6">
@@ -11,6 +17,12 @@
                     <input type="text" class="form-control" [ngModel]="cliente.id" name="id" disabled="true">
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                <label>Data de Cadastro:</label>
+                <input type="text" class="form-control" [ngModel]="cliente.dataCadastro" name="dataCadastro" disabled="true">
+            </div>
+        </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -28,8 +40,19 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><fa-icon [icon]="faSave"></fa-icon>Salvar</button>
+                    <div class="form-group">
+                    <label>Data de Nascimento: *</label>
+                    <input type="text" class="form-control" [(ngModel)]="cliente.dataNascimento" name="dataNascimento">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-success" *ngIf="!cliente.id"><fa-icon [icon]="faSave"></fa-icon>Salvar</button>
+                    <button type="submit" class="btn btn-primary" *ngIf="cliente.id"><fa-icon [icon]="faRotate"></fa-icon>Atualizar</button>
+                    <button type="button" class="btn btn-danger" routerLink="/clientes-list" style="margin-left: 100px;"><fa-icon [icon]="faArrowAltCircleLeft"></fa-icon>Voltar</button>
                     </div>
                     </div>
                 </form>
     </div>
+    <br/>

@@ -5,10 +5,12 @@ import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesFormComponent } from './clientes-form/clientes-form.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 
 @NgModule({
   declarations: [
-    ClientesFormComponent
+    ClientesFormComponent,
+    ListaClientesComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule
   ],
   exports:[
-    ClientesFormComponent
+    ClientesFormComponent,
+    ListaClientesComponent
   ],
 })
 export class ClientesModule { }
